@@ -1,0 +1,156 @@
+.col-lg-1_5,
+.col-lg-4_5 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media (min-width: 992px) {
+    .col-lg-1_5 {
+        -ms-flex: 0 0 12.5%;
+        flex: 0 0 12.5%;
+        max-width: 12.5%;
+    }
+    .col-lg-4_5 {
+        -ms-flex: 0 0 37.5%;
+        flex: 0 0 37.5%;
+        max-width: 37.5%;
+    }
+}
+
+.partner-img {
+    position: relative;
+    display: inline-block;
+    width: 120px; /*100px;*/
+    border-radius: 20px; /*100px;*/
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.partner-img img {
+    width: 100%;
+    border-radius: 20px; /*100px;*/
+}
+
+
+/********************** Footer New **********************/
+
+.footer-contacts {
+    position: relative;
+    margin-top: 10px;
+    padding-top: 40px;
+    background: rgba(0, 0, 0, .04);
+}
+
+.footer-contacts .footer-contact,
+.footer-contacts .footer-link,
+.footer-contacts .footer-newsletter {
+    position: relative;
+    margin-bottom: 40px;
+    color: #454545;
+}
+
+.footer-contacts .footer-contact h2,
+.footer-contacts .footer-link h2,
+.footer-contacts .footer-newsletter h2 {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fbaf32;
+}
+
+.footer-contacts .footer-contact h2::after,
+.footer-contacts .footer-link h2::after,
+.footer-contacts .footer-newsletter h2::after {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #719a0a;
+}
+
+.footer-contacts .footer-link a {
+    display: block;
+    margin-bottom: 10px;
+    color: #454545;
+    transition: .3s;
+}
+
+.footer-contacts .footer-link a::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    color: #fbaf32;
+}
+
+.footer-contacts .footer-link a:hover {
+    color: #fbaf32;
+    letter-spacing: 1px;
+}
+
+.footer-contacts .footer-contact p i {
+    width: 25px;
+    color: #fbaf32;
+}
+
+.footer-contacts .footer-social {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+}
+
+.footer-contacts .footer-social a {
+    display: inline-block;
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbaf32;
+    border-radius: 35px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.footer-contacts .footer-social a:hover {
+    background: #719a0a;
+}
+
+.footer-contacts .footer-social a:last-child {
+    margin: 0;
+}
+
+.footer-bar {
+    position: relative;
+    /*background: rgba(0, 0, 0, 0.04);*/
+}
+
+.footer-bar .copyright {
+    position: relative;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: .8em;
+}
+
+.footer-bar .copyright p {
+    margin: 0;
+    display: inline-block;
+    color: #454545;
+}
+
+.footer-bar .copyright p a {
+    color: #fbaf32;
+}
+
+.footer-bar .copyright p a:hover {
+    color: #719a0a;
+}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'img/cobija.png' %}" type="image/png" sizes="16x16">
+    <title>{% block title %}Cobija de Amor{% endblock %}</title>
+    {% include 'base/css.html' %}
+    {% block cssplus %}{% endblock %}
+</head>
+<body id="page-top">
+    {% include 'base/navbar.html' %}
+
+    {% block header %}
+    {% include 'base/header.html' %}
+    {% endblock header %}
+
+    {% block content %}
+
+    <!-- About -->
+    {% block content_about %}
+    {% endblock content_about %}
+
+    <!-- Pets -->
+    {% block content_pets %}
+    {% endblock content_pets %}
+
+    <!-- Members -->
+    {% block content_members %}
+    {% endblock content_members %}
+
+    <!-- Partners -->
+    {% block content_partners %}
+    {% endblock content_partners %}
+
+    <!-- Links -->
+    {% block content_links %}
+    {% endblock content_links %}
+
+    <!-- Contact -->
+    {% block content_contact %}
+    {% endblock content_contact %}
+
+    {% endblock content %}
+
+    <a href="#top" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    {% include 'base/footer.html' %}
+    {% include 'base/javascript.html' %}
+    {% block javascriptplus %}{% endblock %}
+</body>
+</html>
