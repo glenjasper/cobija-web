@@ -5,6 +5,7 @@ from apps.core.models import (
     PetSize,
     PetColor,
 )
+from apps.partner.models import Partner
 
 class Pet(models.Model):
     MAN = 1
@@ -21,6 +22,8 @@ class Pet(models.Model):
     petsize = models.ForeignKey(to = PetSize, on_delete = models.CASCADE, verbose_name = 'Pet Size')
     petcolor = models.ForeignKey(to = PetColor, on_delete = models.CASCADE, verbose_name = 'Pet Color')
     adopted = models.BooleanField(default = False, verbose_name =  'Adopted')
+    adopter = models.ForeignKey(to = Partner, on_delete = models.CASCADE, blank = True, null = True, verbose_name = 'Adopter', help_text = 'Adopter')
+    adoption_date = models.DateField(blank = True, null = True, verbose_name = 'Adoption date')
     status = models.BooleanField(default = True, verbose_name =  'Status')
     created = models.DateTimeField(auto_now_add = True, blank = True, null = True, verbose_name = 'Creation date')
     updated = models.DateTimeField(auto_now = True, blank = True, null = True, verbose_name = 'Modification date')
@@ -42,9 +45,10 @@ class PetPhoto(models.Model):
     updated = models.DateTimeField(auto_now = True, blank = True, null = True, verbose_name = 'Modification date')
 
     class Meta:
+        db_table = "cobija_petphoto"
         verbose_name = "Pet photo"
         verbose_name_plural = "Pet photos"
-        ordering = ["photo"]
+        ordering = ["pk"]
 
     # def __str__(self):
     #    return self.photo

@@ -1,6 +1,20 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block title %}{{ block.super }}{% endblock %}
+{% block cssplus %}
+    <style>
+        .carousel .carousel-item {
+            /*position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;*/
+            display: flex;
+        }
+    </style>
+{% endblock %}
 
 <!-- About -->
 {% block content_about %}
@@ -51,6 +65,42 @@
     </div>
 {% endblock content_about %}
 
+<!-- Event -->
+{% block content_events %}
+    <section id="section_events" class="bg-light">
+        <div class="blog">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Campañas</h2>
+                    <p>Galería de las campañas organizadas por Cobija de Amor</p>
+                </div>
+                <div class="row">
+                    {% for news in context_events %}
+                    <div class="col-md-3">
+                        <div class="event-item">
+                            <div class="floating-icon">
+                                <a href="{% url 'event_app:url_eventdetail' news.id %}">
+                                    <img src="{{ news.logo.url }}" class="img-responsive">
+                                </a>
+                            </div>
+                            <div>
+                                <h3>{{ news.title }}</h3>
+                                <div class="event-location">{{ news.location }}</div>
+                                <div class="event-position">– {{ news.date }} –</div>
+                                <div class="event-desc">{{ news.description|slice:"0:110" }}...</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="more-information">
+                    <a href="{% url 'event_app:url_allevents' %}">Ver más...</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content_events %}
+
 <!-- Pets -->
 {% block content_pets %}
     <section id="section_pets">
@@ -72,7 +122,7 @@
                                     <p>
                                         Vea la galería de los animalitos que están esperando ser adoptados, todos están bien cuidadados, aseados y sanitos, gracias a las personas que nos apoyan.
                                     </p>
-                                    <a class="btn custom-btn" href="#">Ver Galería</a>
+                                    <a class="btn custom-btn" href="{% url 'pet_app:url_petstoadopt' %}">Ver Galería</a>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +138,7 @@
                                     <p>
                                         Vea la galería de las cobijitas que encontraron un cálido hogar, ellos están muy felices, agradeciendo día a día con mucho amor.
                                     </p>
-                                    <a class="btn custom-btn" href="#">Ver Galería</a>
+                                    <a class="btn custom-btn" href="{% url 'pet_app:url_petsadopted' %}">Ver Galería</a>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +148,58 @@
         </div>
     </section>
 {% endblock content_pets %}
+
+<!-- Partners -->
+{% block content_partners %}
+    <section id="section_partners" class="bg-light">
+        <div class="food">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Cobijalovers</h2>
+                    <p>Todas las personas que nos ayudaron en esta causa</p>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="food-item">
+                            <div class="partner-img">
+                                <img src="{% static 'img/adoptante.jpg' %}" alt="Image">
+                            </div>
+                            <h2>Adoptantes</h2>
+                            <p>
+                                Todas las personas que le dieron un hogar a las cobijitas que cuidamos, siempre les estaremos muy agradecidos.
+                            </p>
+                            <a href="{% url 'partner_app:url_partneradopter' %}">Ver Galería</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="food-item">
+                            <div class="partner-img">
+                                <img src="{% static 'img/donante.jpg' %}" alt="Image">
+                            </div>
+                            <h2>Donantes</h2>
+                            <p>
+                                Todas las personas que donaron dinero, alimentos y/o bienes para las cobijitas que cuidamos, siempre les estaremos muy agradecidos.
+                            </p>
+                            <a href="{% url 'partner_app:url_partnerdonor' %}">Ver Galería</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="food-item">
+                            <div class="partner-img">
+                                <img src="{% static 'img/voluntario.png' %}" alt="Image">
+                            </div>
+                            <h2>Voluntarios</h2>
+                            <p>
+                                Todas las personas que nos regalaron su tiempo en las diferentes campañas que realizamos, siempre les estaremos muy agradecidos.
+                            </p>
+                            <a href="{% url 'partner_app:url_partnervoluntary' %}">Ver Galería</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content_partners %}
 
 <!-- Members -->
 {% block content_members %}
@@ -126,9 +228,13 @@
                                     <div class="team-img">
                                         <img src="{{ member.image.url }}" alt="Image">
                                         <div class="team-social">
-                                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                            <a href=""><i class="fab fa-instagram"></i></a>
+                                            {% if members.facebook %}
+                                            <a href="{{ members.facebook }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                                            {% elif members.linkedin %}
+                                            <a href="{{ members.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                                            {% elif members.instagram %}
+                                            <a href="{{ members.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="team-text">
@@ -155,58 +261,6 @@
     </section>
 {% endblock content_members %}
 
-<!-- Partners -->
-{% block content_partners %}
-    <section id="section_partners">
-        <div class="food">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2>Cobijalovers</h2>
-                    <p>Todas las personas que nos ayudaron en esta causa</p>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-md-4">
-                        <div class="food-item">
-                            <div class="partner-img">
-                                <img src="{% static 'img/adoptante.jpg' %}" alt="Image">
-                            </div>
-                            <h2>Adoptantes</h2>
-                            <p>
-                                Todas las personas que le dieron un hogar a las cobijitas que cuidamos, siempre les estaremos muy agradecidos.
-                            </p>
-                            <a href="#">Ver Galería</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="food-item">
-                            <div class="partner-img">
-                                <img src="{% static 'img/donante.jpg' %}" alt="Image">
-                            </div>
-                            <h2>Donantes</h2>
-                            <p>
-                                Todas las personas que donaron dinero o alimentos y bienes para las cobijitas que cuidamos, siempre les estaremos muy agradecidos.
-                            </p>
-                            <a href="#">Ver Galería</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="food-item">
-                            <div class="partner-img">
-                                <img src="{% static 'img/voluntario.png' %}" alt="Image">
-                            </div>
-                            <h2>Voluntarios</h2>
-                            <p>
-                                Todas las personas que nos regalaron su tiempo en las diferentes campañas que realizamos, siempre les estaremos muy agradecidos.
-                            </p>
-                            <a href="#">Ver Galería</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-{% endblock content_partners %}
-
 <!-- Links -->
 {% block content_links %}
     <!--
@@ -227,7 +281,7 @@
 
 <!-- Contact -->
 {% block content_contact %}
-    <section id="section_contact">
+    <section id="section_contact" class="bg-light">
         <div class="footer-contacts">
             <div class="container">
                 <div class="row">
@@ -242,7 +296,7 @@
                                     <div class="footer-social">
                                         <a href="https://www.facebook.com/ref.can" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
                                         <a href="https://www.youtube.com/channel/UCZ5mJ6RwfAK0lueWNa1fZxg" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.instagram.com/cobijadeamor" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>

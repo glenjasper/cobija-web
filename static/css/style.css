@@ -110,12 +110,11 @@ a:focus {
 .navbar .navbar-brand {
     margin: 0;
     color: #fbaf32;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 0px;
     font-weight: 700;
     font-family: 'Nunito', sans-serif;
     transition: .5s;
-    
 }
 
 .navbar .navbar-brand span {
@@ -146,13 +145,13 @@ a:focus {
     .navbar {
         position: absolute;
         width: 100%;
-        padding: 30px 60px;
+        padding: 30px 60px; /*Status 1*/
         background: transparent !important;
         z-index: 9;
     }
     
     .navbar.nav-sticky {
-        padding: 10px 60px;
+        padding: 10px 60px; /*Status 2*/
         background: #ffffff !important;
     }
     
@@ -168,14 +167,14 @@ a:focus {
     .navbar-light .navbar-nav .nav-link:focus {
         padding: 10px 10px 8px 10px;
         font-family: 'Nunito', sans-serif;
-        color: #ffffff;
+        color: #ffffff; /*Color 1*/
         font-size: 18px;
         font-weight: 600;
     }
     
     .navbar-light.nav-sticky .navbar-nav .nav-link,
     .navbar-light.nav-sticky .navbar-nav .nav-link:focus {
-        color: #666666;
+        color: #666666; /*Color 2*/
     }
 
     .navbar-light .navbar-nav .nav-link:hover,
@@ -232,7 +231,7 @@ a:focus {
     position: relative;
     width: 100%;
     height: 100vh;
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -553,8 +552,8 @@ a:focus {
     width: 100%;
     padding: 45px 0 15px 0;
     /*padding: 90px 0 60px 0;
-    margin: 45px 0;*/
-    background: rgba(0, 0, 0, .04);
+    margin: 45px 0;
+    background: rgba(0, 0, 0, .04);*/
 }
 
 .food .food-item {
@@ -1203,7 +1202,7 @@ a:focus {
     position: relative;
     width: 100%;
     padding: 45px 0 0 0;
-    background: rgba(0, 0, 0, .04);
+    /*background: rgba(0, 0, 0, .04);*/
 }
 
 .blog .blog-item {
@@ -1745,7 +1744,7 @@ a:focus {
     min-height: 150px;
     margin: 0 0 30px 0;
     padding: 30px 15px 0 15px;
-    background: rgba(0, 0, 0, .04);
+    /*background: rgba(0, 0, 0, .04);*/
 }
 
 .contact .contact-info {
@@ -1841,7 +1840,7 @@ a:focus {
     */
     margin-top: 30px;
     padding-top: 30px;
-    background: rgba(0, 0, 0, .04);
+    /*background: rgba(0, 0, 0, .04);*/
 }
 
 .footer .footer-contact,

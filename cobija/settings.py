@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     # my apps
     'apps.about',
     'apps.core',
-    'apps.members',
+    'apps.member',
     'apps.pet',
     'apps.partner',
+    'apps.event',
 ]
 
 MIDDLEWARE = [

@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from apps.members.models import Member
 from apps.about.models import About
+from apps.member.models import Member
+from apps.event.models import Event
 from django.db.models import Q
 from pprint import pprint
 
@@ -39,5 +40,9 @@ class HomeView(ListView):
         # About context
         query_about = About.objects.get(status = True, pk = 1)
         context['context_about'] = query_about
+
+        # Event context
+        query_events = Event.objects.all().filter(status = True)[:4]
+        context['context_events'] = query_events
 
         return context

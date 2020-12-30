@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block cssplus %}
+    <style>
+        .navbar-mod {
+            position: absolute;
+            width: 100%;
+            padding: 10px 60px;
+            background: #ffffff !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link,
+        .navbar-light .navbar-nav .nav-link:focus {
+            color: #666666;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #fbaf32;
+        }
+    </style>
+{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+    <section class="pt-5 pb-5 bg-light">
+        <div class="container pt-5">
+            <div class="section-header text-center">
+                <h2>Campañas</h2>
+                <p>Galería de todas las campañas</p>
+            </div>
+            <div class="row">
+                {% for news in context_allevents %}
+                <div class="col-md-3">
+                    <div class="event-item">
+                        <div class="floating-icon">
+                            <a href="{% url 'event_app:url_eventdetail' news.id %}">
+                                <img src="{{ news.logo.url }}" class="img-responsive">
+                            </a>
+                        </div>
+                        <div>
+                            <h3>{{ news.title }}</h3>
+                            <div class="event-location">{{ news.location }}</div>
+                            <div class="event-position">– {{ news.date }} –</div>
+                            <div class="event-desc">{{ news.description|slice:"0:110" }}...</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

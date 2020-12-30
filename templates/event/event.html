@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block cssplus %}
+    <style>
+        .navbar-mod {
+            position: absolute;
+            width: 100%;
+            padding: 10px 60px;
+            background: #ffffff !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link,
+        .navbar-light .navbar-nav .nav-link:focus {
+            color: #666666;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #fbaf32;
+        }
+    </style>
+{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+    <section class="pt-5 pb-5">
+        <div class="container pt-5">
+            <div class="section-header text-center">
+                <h2>Campaña</h2>
+            </div>
+            {% for news in context_eventdetail %}
+                <div class="g-padding-y-10--xs">
+                    <div class="row g-margin-b-30--xs">
+                        <div class="col-sm-12">
+                            <div class="g-margin-t-10--md g-margin-b-20--xs">
+                                <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-letter-spacing--2 g-margin-b-20--xs text-color-base">
+                                    {{ news.date|date:"DATE_FORMAT" }}
+                                </p>
+                                <h2 class="g-font-size-30--md">
+                                    {{ news.title }}
+                                </h2>
+                                <p class="g-font-size-14--md">
+                                    {{ news.location }}
+                                </p>
+                                <p class="g-font-size-15--md">
+                                    {{ news.description }}
+                                </p>
+                                {% if news.link %}
+                                <p class="g-font-size-13--md">
+                                    <b>Link: </b>
+                                    <a href="{{ news.link }}" target="_blank" rel="noopener noreferrer">
+                                        {{ news.link }}
+                                    </a>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if not forloop.last %}<hr>{% endif %}
+            {% endfor %}
+
+            <div id="bs4-slide-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for news in context_eventphotos %}
+                        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                            <img class="d-block w-100" src="{{ news.photo.url }}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#bs4-slide-carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#bs4-slide-carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascriptplus %}
+    <script>
+        $('#bs4-slide-carousel').carousel({
+            interval: 5000
+        })
+    </script>
+{% endblock javascriptplus %}

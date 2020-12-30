@@ -21,8 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include(('apps.core.urls', 'core_app'), namespace = 'core_app')),
-    #path('about/', include(('apps.about.urls', 'about_app'), namespace = 'about_app')),
-    #path('members/', include(('apps.members.urls', 'members_app'), namespace = 'members_app')),
+    path('pet/', include(('apps.pet.urls', 'pet_app'), namespace = 'pet_app')),
+    path('partner/', include(('apps.partner.urls', 'partner_app'), namespace = 'partner_app')),
+    path('event/', include(('apps.event.urls', 'event_app'), namespace = 'event_app')),
     path('admin/', admin.site.urls),
 ]
 

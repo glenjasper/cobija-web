@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block cssplus %}
+    <style>
+        .navbar-mod {
+            position: absolute;
+            width: 100%;
+            padding: 10px 60px;
+            background: #ffffff !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link,
+        .navbar-light .navbar-nav .nav-link:focus {
+            color: #666666;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #fbaf32;
+        }
+    </style>
+{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+    <section class="pt-5 pb-5 bg-light">
+        <div class="container pt-5">
+            <div class="section-header text-center">
+                <h2>Adoptantes</h2>
+                <p>Todas las personas que le dieron un hogar a las cobijitas que cuidamos</p>
+            </div>
+            <div class="row d-flex">
+                {% for _, data_partner in context_partneradopter.items %}
+                    <div class="col-md-3">
+                        <div class="blog-entry align-self-stretch">
+                            <a class="block-20 rounded" style="background-image: url({{ data_partner.partner.image.url }});"></a>
+                            <div class="text p-3">
+                                <div class="meta mb-2">
+                                    <div class="meta-chat"><span class="fas fa-paw"></span> {{ data_partner.partner }}</div>
+                                </div>
+                                <h3 class="heading">
+                                    {% if data_partner.pets|length == 1 %}
+                                        {% for pet in data_partner.pets %}
+                                        Adoptó a {{ pet }}, {{ pet.typepet|lower }} {% if pet.sex == 1 %}macho{% else%}hembra{% endif %} de {{ pet.aproximated_age }} de edad, el día {{ pet.adoption_date }}.
+                                        {% endfor %}
+                                    {% else %}
+                                        Adoptó a los animalitos {% for pet in data_partner.pets %}{{ pet }}{% if not forloop.last %}, {% endif %}{% endfor %}.
+                                    {% endif %}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
