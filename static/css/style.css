@@ -215,6 +215,7 @@ a:focus {
 /*******************************/
 /********** Hero CSS ***********/
 /*******************************/
+/*
 .carousel {
     position: relative;
     width: 100%;
@@ -231,7 +232,7 @@ a:focus {
     position: relative;
     width: 100%;
     height: 100vh;
-    /*display: flex;*/
+    / *display: flex;* /
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -359,7 +360,7 @@ a:focus {
         letter-spacing: 0;
     }
 }
-
+*/
 
 /*******************************/
 /******* Page Header CSS *******/

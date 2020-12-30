@@ -1,7 +1,11 @@
 {% load static %}
     <div class="navbar navbar-expand-lg navbar-light bg-light navbar-mod">
         <div class="container-fluid">
-            <a class="navbar-brand page-scroll" href="{% url 'core_app:url_home' %}">Cobija de <span>Amor</span></a>
+            <a class="navbar-brand page-scroll" href="{% url 'core_app:url_home' %}">
+                <!--<img src="{% static 'img/cobijadeamor.png' %}">-->
+                <span class="fas fa-paw"></span>
+                Cobija de <span>Amor</span>
+            </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

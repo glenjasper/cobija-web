@@ -155,6 +155,9 @@
     color: #719a0a;
 }
 
+/*----------------------
+Pets
+----------------------*/
 .pet-name,
 .pet-desc {
     position: relative !important;
@@ -164,11 +167,11 @@
 }
 
 .pet-name {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .pet-desc {
-    margin-bottom: 60px;
+    margin-bottom: 0;
     font-size: 1.1em;
 }
 /*
@@ -294,10 +297,18 @@ Partners
 /*----------------------
 Events
 ----------------------*/
+.event-entry {
+    position: relative;
+    width: 100%;
+    padding: 45px 0 0 0;
+    /*background: rgba(0, 0, 0, .04);*/
+}
+
 .event-item {
     text-align: center;
     background-color: #fff;
     font-family: "Open Sans", Sans-serif;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .06);
 }
 
 .event-item h3 {
@@ -337,13 +348,35 @@ Events
 }
 
 .more-information {
-    text-align: right;
-    padding: 5px 10px 20px 10px;
+    text-align: center;
+    padding: 15px 0 20px 0;
 }
 
-/*--------------------------------------------------------------
-# Floating icon
---------------------------------------------------------------*/
+.more-information a {
+    position: relative;
+    font-size: 16px;
+}
+
+.more-information a::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 1px;
+    bottom: 0;
+    left: calc(50% - 25px);
+    background: #fbaf32;
+    transition: .3s;
+}
+
+.more-information a:hover::after {
+    width: 100%;
+    left: 0;
+    background: #719a0a;
+}
+
+/*----------------------
+Varios
+----------------------*/
 .floating-icon {
     transition: all 0.3s ease-in-out;
     display: inline-block;
