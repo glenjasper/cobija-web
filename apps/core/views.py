@@ -28,7 +28,7 @@ class HomeView(ListView):
                 members_all.update({index_g: group})
                 group = {}
                 index_g += 1
-        
+
         if group:
             members_all.update({index_g: group})
 

@@ -364,12 +364,14 @@
                                     <div class="team-img">
                                         <img src="{{ member.image.url }}" alt="image-member">
                                         <div class="team-social">
-                                            {% if members.facebook %}
-                                            <a href="{{ members.facebook }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                                            {% elif members.linkedin %}
-                                            <a href="{{ members.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                                            {% elif members.instagram %}
-                                            <a href="{{ members.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                                            {% if member.facebook %}
+                                            <a href="{{ member.facebook }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                                            {% endif %}
+                                            {% if member.linkedin %}
+                                            <a href="{{ member.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                                            {% endif %}
+                                            {% if member.instagram %}
+                                            <a href="{{ member.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                                             {% endif %}
                                         </div>
                                     </div>
